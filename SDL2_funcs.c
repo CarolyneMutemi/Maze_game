@@ -69,13 +69,13 @@ void drawWalls()
     }
 }
 
-void rotateAndMove(SDL_Event event)
+void rotateAndMove(SDL_Event event, const Uint8 *keyboard_state_array)
 {
     if (event.type == SDL_KEYDOWN)
     {
         // Set the key state to pressed
         //  keys[event.key.keysym.scancode] = 1;
-        /*if (keyboard_state_array[SDL_SCANCODE_W] && keyboard_state_array[SDL_SCANCODE_D])
+        if (keyboard_state_array[SDL_SCANCODE_W] && keyboard_state_array[SDL_SCANCODE_D])
         {
             moveForward(viewAngle, true);
             moveSideWays(viewAngle, true);
@@ -95,7 +95,7 @@ void rotateAndMove(SDL_Event event)
         {
             moveForward(viewAngle, false);
             moveSideWays(viewAngle, false);
-        }*/
+        }
         switch (event.key.keysym.sym)
         {
         // Rotation

@@ -8,7 +8,7 @@ int main()
 	SDL_Event e;
 	bool quit = false;
 	// int keys[256] = {0};
-	// const Uint8 *keyboard_state_array = SDL_GetKeyboardState(NULL);
+	const Uint8 *keyboard_state_array = SDL_GetKeyboardState(NULL);
 
 	if (!init())
 	{
@@ -35,7 +35,7 @@ int main()
 					quit = true;
 				else
 				{
-					rotateAndMove(e);
+					rotateAndMove(e, keyboard_state_array);
 				}
             }
 

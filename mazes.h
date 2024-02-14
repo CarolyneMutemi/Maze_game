@@ -35,7 +35,7 @@ bool init();
 void closeDown();
 void drawUpperLower();
 void drawWalls();
-void rotateAndMove(SDL_Event event);
+void rotateAndMove(SDL_Event event, const Uint8 *keyboard_state_array);
 void moveForward(double viewAlpha, bool forward);
 void moveSideWays(double viewAlpha, bool right);
 void drawMap();

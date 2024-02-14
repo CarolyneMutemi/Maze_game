@@ -68,7 +68,7 @@ int main()
 	bool quit = false;
     coordinates wall;
     // int keys[256] = {0};
-    // const Uint8 *keyboard_state_array = SDL_GetKeyboardState(NULL);
+    const Uint8 *keyboard_state_array = SDL_GetKeyboardState(NULL);
 
 	if (!init())
 	{
@@ -83,7 +83,7 @@ int main()
 				if( e.type == SDL_QUIT )
 					quit = true;
                 else
-                    rotateAndMove(e);
+                    rotateAndMove(e, keyboard_state_array);
             }
 
             wall = getWallHeight(viewAngle);
