@@ -1,7 +1,7 @@
 #include "mazes.h"
 
-SDL_Window* window = NULL;
-SDL_Renderer* renderer = NULL;
+//SDL_Window* window = NULL;
+//SDL_Renderer* renderer = NULL;
 
 void drawMap()
 {
@@ -62,45 +62,45 @@ void drawLineOfSight(coordinates wall)
 }
 
 
-int main()
-{
-	SDL_Event e;
-	bool quit = false;
-    coordinates wall;
-    // int keys[256] = {0};
-    const Uint8 *keyboard_state_array = SDL_GetKeyboardState(NULL);
+// int main()
+// {
+// 	SDL_Event e;
+// 	bool quit = false;
+//     coordinates wall;
+//     // int keys[256] = {0};
+//     const Uint8 *keyboard_state_array = SDL_GetKeyboardState(NULL);
 
-	if (!init())
-	{
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-		while( quit == false )
-		{
-			while( SDL_PollEvent( &e ) )
-			{
-				if( e.type == SDL_QUIT )
-					quit = true;
-                else
-                    rotateAndMove(e, keyboard_state_array);
-            }
+// 	if (!init())
+// 	{
+// 		exit(EXIT_FAILURE);
+// 	}
+// 	else
+// 	{
+// 		while( quit == false )
+// 		{
+// 			while( SDL_PollEvent( &e ) )
+// 			{
+// 				if( e.type == SDL_QUIT )
+// 					quit = true;
+//                 else
+//                     rotateAndMove(e, keyboard_state_array);
+//             }
 
-            wall = getWallHeight(viewAngle);
+//             wall = getWallHeight(viewAngle);
 
-			// Clear the screen
-    		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // white
-    		SDL_RenderClear(renderer);
+// 			// Clear the screen
+//     		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // white
+//     		SDL_RenderClear(renderer);
 
-			drawMap();
-            drawPlayer();
-            drawLineOfSight(wall);
-            printf("ViewAngle is %f\n", viewAngle);
+// 			drawMap();
+//             drawPlayer();
+//             drawLineOfSight(wall);
+//             printf("ViewAngle is %f\n", viewAngle);
 
-			SDL_RenderPresent(renderer);
+// 			SDL_RenderPresent(renderer);
 
-		}
-	}
+// 		}
+// 	}
 
-	closeDown();
-}
+// 	closeDown();
+// }
