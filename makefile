@@ -1,5 +1,5 @@
 #OBJS specifies which files to compile as part of the project
-OBJS = drawMap.c mazeFunc.c vertical.c SDL2_funcs.c
+OBJS = drawMappp.c functions.c
 
 #CC specifies which compiler we're using
 CC = gcc
@@ -12,7 +12,7 @@ COMPILER_FLAGS = -Wall -Werror -Wextra -pedantic
 LINKER_FLAGS = -lSDL2 -lSDL2_image -lm
 
 #OBJ_NAME specifies the name of our exectuable
-OBJ_NAME = drawMap
+OBJ_NAME = drawMappp
 
 #This is the target that compiles our executable
 all : $(OBJS)
