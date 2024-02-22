@@ -19,7 +19,6 @@ typedef struct vector {
 typedef struct point {
     double x;
     double y;
-    double distToPlayer;
 } point;
 
 typedef struct movePlayer {
@@ -48,6 +47,9 @@ void drawLineOfSight();
 point getFinalPoint(double rayDirX, double rayDirY);
 vector normalizeVector(double rayDirx, double rayDirY);
 double degToRad(double degree);
-//int getWallSliceHeight(point hit);
+void drawWall();
+double checkWall(vector rayDir);
+vector getRayDir(double xOnScreen);
+void move();
 
 #endif

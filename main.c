@@ -22,15 +22,14 @@ int main()
                 movement(e);
             }
 
-			moveSideWays();
-			moveForward();
+			move();
 			// Clear the screen
     		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // white
     		SDL_RenderClear(renderer);
 
 			SDL_SetRenderDrawColor(renderer, 0, 255, 255, 255);
 			drawUpperLower();
-			drawWallSlice();
+			drawWall();
 
 			SDL_RenderPresent(renderer);
 		}
