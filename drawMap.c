@@ -1,6 +1,6 @@
 #include "newMaze.h"
 
-int cubeUnit = 32;
+int cubeUnit = 8;
 
 void drawMap()
 {
@@ -150,7 +150,7 @@ void drawLineOfSight()
     point intersect;
     vector ray;
 
-    for (int x = 0; x < screenWidth; x++)
+    for (int x = 0; x < viewPortWidth; x++)
     {
         ray = getRayDir(x);
         rayDirX = ray.x;
@@ -159,6 +159,14 @@ void drawLineOfSight()
         intersect = getFinalPoint(rayDirX, rayDirY);
         SDL_RenderDrawLine(renderer, (playerX * cubeUnit), (playerY * cubeUnit), (intersect.x * cubeUnit), (intersect.y * cubeUnit));
     }
+}
+
+void renderMiniMap()
+{
+    drawMap();
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    drawPlayer();
+    drawLineOfSight();
 }
 
 int main()
@@ -188,11 +196,10 @@ int main()
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // white
     		SDL_RenderClear(renderer);
 
-			drawMap();
-            SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-            drawPlayer();
-            drawLineOfSight();
-            //printf("PlayerX: %d PlayerY: %d\n", playerX, playerY);
+            SDL_Rect map = {1440, 720, 480, 240};
+
+            SDL_RenderSetViewport(renderer, &map);
+            renderMiniMap();
             SDL_RenderPresent(renderer);
 
 		}

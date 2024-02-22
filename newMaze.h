@@ -4,6 +4,8 @@
 #define mapHeight 30
 #define screenWidth 1920
 #define screenHeight 960
+#define viewPortHeight 480
+#define viewPortWidth 240
 
 #include <math.h>
 #include <SDL2/SDL.h>
@@ -51,5 +53,6 @@ void drawWall();
 double checkWall(vector rayDir);
 vector getRayDir(double xOnScreen);
 void move();
+void renderMiniMap();
 
 #endif
