@@ -127,13 +127,11 @@ point getFinalPoint(double rayDirX, double rayDirY)
         {
             intX = playerX + normVector.x * (sideDistX - deltaDistX);
             intY = playerY + normVector.y * (sideDistX - deltaDistX);
-            SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
         }
         else
         {
             intX = playerX + normVector.x * (sideDistY - deltaDistY);
             intY = playerY + normVector.y * (sideDistY - deltaDistY);
-            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
         }
     }
     else
@@ -150,15 +148,13 @@ void drawLineOfSight()
     point intersect;
     vector ray;
 
-    for (int x = 0; x < viewPortWidth; x++)
-    {
-        ray = getRayDir(x);
-        rayDirX = ray.x;
-        rayDirY = ray.y;
+    ray = getRayDir(screenWidth / 2);
+    rayDirX = ray.x;
+    rayDirY = ray.y;
 
-        intersect = getFinalPoint(rayDirX, rayDirY);
-        SDL_RenderDrawLine(renderer, (playerX * cubeUnit), (playerY * cubeUnit), (intersect.x * cubeUnit), (intersect.y * cubeUnit));
-    }
+    intersect = getFinalPoint(rayDirX, rayDirY);
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    SDL_RenderDrawLine(renderer, (playerX * cubeUnit), (playerY * cubeUnit), (intersect.x * cubeUnit), (intersect.y * cubeUnit));
 }
 
 void renderMiniMap()
@@ -167,43 +163,4 @@ void renderMiniMap()
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     drawPlayer();
     drawLineOfSight();
-}
-
-int main()
-{
-	SDL_Event e;
-	bool quit = false;
-    // coordinates wall;
-    // int keys[256] = {0};
-    //const Uint8 *keyboard_state_array = SDL_GetKeyboardState(NULL);
-
-	if (!init())
-	{
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-		while( quit == false )
-		{
-			while( SDL_PollEvent( &e ) )
-			{
-				if( e.type == SDL_QUIT )
-					quit = true;
-                movement(e);
-            }
-            move();
-
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // white
-    		SDL_RenderClear(renderer);
-
-            SDL_Rect map = {1440, 720, 480, 240};
-
-            SDL_RenderSetViewport(renderer, &map);
-            renderMiniMap();
-            SDL_RenderPresent(renderer);
-
-		}
-	}
-
-	closeDown();
 }

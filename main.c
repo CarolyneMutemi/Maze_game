@@ -5,6 +5,9 @@ int main()
 {
     SDL_Event e;
 	bool quit = false;
+	SDL_Rect screen = {0, 0, screenWidth, screenHeight};
+	SDL_Rect map = {1440, 720, 480, 240};
+	bool showMap = false;
 
 	if (!init())
 	{
@@ -19,6 +22,13 @@ int main()
 			{
 				if( e.type == SDL_QUIT )
 					quit = true;
+				if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_SPACE)
+				{
+					if (showMap)
+						showMap = false;
+					else
+						showMap = true;
+				}
                 movement(e);
             }
 
@@ -27,9 +37,16 @@ int main()
     		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // white
     		SDL_RenderClear(renderer);
 
+			SDL_RenderSetViewport(renderer, &screen);
+
 			SDL_SetRenderDrawColor(renderer, 0, 255, 255, 255);
 			drawUpperLower();
 			drawWall();
+			if (showMap)
+			{
+            	SDL_RenderSetViewport(renderer, &map);
+            	renderMiniMap();
+			}
 
 			SDL_RenderPresent(renderer);
 		}
