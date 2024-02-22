@@ -4,7 +4,6 @@ void movement(SDL_Event event)
 {
     player.moveSpeed = 0;
     player.rotSpeed = 0;
-    // printf("Move speed id %f\n", moveSpeed);
 
     if (event.type == SDL_KEYDOWN)
     {
@@ -12,18 +11,18 @@ void movement(SDL_Event event)
         {
         // Rotation
         case SDLK_LEFT:
-            player.rotSpeed -= degToRad(1.0);
+            player.rotSpeed += degToRad(0.5);
             break;
         case SDLK_RIGHT:
-            player.rotSpeed += degToRad(1.0);
+            player.rotSpeed -= degToRad(0.5);
             break;
         // Movement
         case SDLK_UP:
-            player.moveSpeed += 0.2;
+            player.moveSpeed += 0.05;
             player.forward = 1;
             break;
         case SDLK_DOWN:
-            player.moveSpeed -= 0.2;
+            player.moveSpeed -= 0.05;
             player.forward = 0;
             break;
         default:
