@@ -7,7 +7,7 @@ int main()
 	bool quit = false;
 	SDL_Rect screen = {0, 0, screenWidth, screenHeight};
 	SDL_Rect map = {1440, 720, 480, 240};
-	bool showMap = false;
+	bool showMap = true;
 
 	if (!init())
 	{
@@ -15,7 +15,18 @@ int main()
 	}
 	else
 	{
+		if (!loadMedia())
+			exit(EXIT_FAILURE);
 
+		SDL_SetRenderDrawColor(renderer, 255,255,255,255);
+		SDL_RenderClear(renderer);
+
+		// Render the instructions page.
+		SDL_RenderCopy(renderer, imageTexture, NULL, NULL);
+		SDL_RenderPresent(renderer);
+		SDL_Delay(10000);
+
+		SDL_RenderClear(renderer);
 		while( quit == false )
 		{
 			while( SDL_PollEvent( &e ) )

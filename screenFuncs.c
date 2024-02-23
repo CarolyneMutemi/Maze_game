@@ -43,3 +43,47 @@ void drawUpperLower()
     SDL_SetRenderDrawColor(renderer, 178, 190, 181, 255); // green
     SDL_RenderFillRect(renderer, &lowerRect);
 }
+
+SDL_Texture* loadTexture(const char *path)
+{
+    // The final texture.
+    SDL_Texture *newTexture = NULL;
+
+    // Load the image at the given path.
+    SDL_Surface *loadedSurface = IMG_Load(path);
+
+    if (!loadedSurface)
+    {
+        printf("Failed to load the image %s! SDL Error: %s\n", path, SDL_GetError());
+    }
+    else
+    {
+        // Create texture from surface.
+        newTexture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
+        if (!newTexture)
+        {
+            printf("Unable to create texture from %s! SDL Error: %s\n", path,SDL_GetError());
+        }
+
+        // Free the converted surface.
+        SDL_FreeSurface(loadedSurface);
+    }
+
+    return newTexture;
+}
+
+bool loadMedia()
+{
+    // Loading success flag.
+    bool success = true;
+
+    // Load PNG texture
+    imageTexture = loadTexture("mazeInstructions.png");
+    if (!imageTexture)
+    {
+        printf("Failed to load texture image!\n");
+        success = false;
+    }
+
+    return success;
+}

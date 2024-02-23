@@ -9,6 +9,7 @@
 
 #include <math.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,6 +34,7 @@ extern int gameMap[mapHeight][mapWidth];
 extern double playerX, playerY, dirX, dirY, planeX, planeY, time, oldTime;
 extern SDL_Window* window;
 extern SDL_Renderer* renderer;
+extern SDL_Texture* imageTexture;
 extern int cubeUnit;
 extern movePlayer player;
 
@@ -54,5 +56,7 @@ double checkWall(vector rayDir);
 vector getRayDir(double xOnScreen);
 void move();
 void renderMiniMap();
+SDL_Texture* loadTexture(const char *path);
+bool loadMedia();
 
 #endif
