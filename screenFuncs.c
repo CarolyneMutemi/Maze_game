@@ -35,12 +35,12 @@ void drawUpperLower()
 {
     // Draw upper part (red)
     SDL_Rect upperRect = { 0, 0, screenWidth, screenHeight / 2 };
-    SDL_SetRenderDrawColor(renderer, 119, 136, 153, 255); // red
+    SDL_SetRenderDrawColor(renderer, 79, 102, 106, 255); // red
     SDL_RenderFillRect(renderer, &upperRect);
 
     // Draw lower part (green)
     SDL_Rect lowerRect = { 0, screenHeight / 2, screenWidth, screenHeight / 2 };
-    SDL_SetRenderDrawColor(renderer, 178, 190, 181, 255); // green
+    SDL_SetRenderDrawColor(renderer, 131, 137, 150, 255); // green
     SDL_RenderFillRect(renderer, &lowerRect);
 }
 

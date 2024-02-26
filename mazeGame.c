@@ -3,34 +3,7 @@
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 SDL_Texture* imageTexture = NULL;
-
-/*int gameMap[mapHeight][mapWidth]=
-{
-  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-};*/
+bool instructions = true;
 
 int gameMap[mapHeight][mapWidth] =
 {
@@ -79,8 +52,11 @@ movePlayer player = {0, 0, 0};
 vector getRayDir(double xOnScreen)
 {
     vector rayDir;
-    double cameraX = ((2 * xOnScreen) / (double)(screenWidth)) - 1; // position (fraction) of the x co-ordinate on the camera plane.
-    double rayDirX = dirX + ((planeX * cameraX)); //pow X component of the ray vecto, 2r.
+    // position (fraction) of the x co-ordinate on the camera plane.
+    double cameraX = ((2 * xOnScreen) / (double)(screenWidth)) - 1;
+    //pow X component of the ray vector.
+    double rayDirX = dirX + ((planeX * cameraX));
+    // Y component of the ray vector.
     double rayDirY = dirY + (planeY * cameraX); // Y component of the ray vector.
 
     rayDir.x = rayDirX;
@@ -120,6 +96,7 @@ double checkWall(vector rayDir)
 
     int hit = 0;
 
+    // Finding the first x or y intersect and defining the step unit increment.
     if (rayDirX < 0)
     {
         stepX = -1; // left side.
@@ -148,14 +125,14 @@ double checkWall(vector rayDir)
         // choosing which axis intersection to follow - x or y.
         if (sideDistX < sideDistY)
         {
-            SDL_SetRenderDrawColor(renderer, 0,0,0,255);
+            SDL_SetRenderDrawColor(renderer, 220,220,220,255);
             sideDistX += deltaDistX;
             mapX += stepX;
             side = 0; // meaning hit a vertical line i.e followed x axis.
         }
         else
         {
-            SDL_SetRenderDrawColor(renderer, 255,255,255,255);
+            SDL_SetRenderDrawColor(renderer, 169,169,169,255);
             sideDistY += deltaDistY;
             mapY += stepY;
             side = 1; // hit a horizontal line.

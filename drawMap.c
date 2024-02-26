@@ -148,13 +148,16 @@ void drawLineOfSight()
     point intersect;
     vector ray;
 
-    ray = getRayDir(screenWidth / 2);
+    for (int x = 0; x < screenWidth; x++)
+    {
+    ray = getRayDir(x);
     rayDirX = ray.x;
     rayDirY = ray.y;
 
     intersect = getFinalPoint(rayDirX, rayDirY);
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     SDL_RenderDrawLine(renderer, (playerX * cubeUnit), (playerY * cubeUnit), (intersect.x * cubeUnit), (intersect.y * cubeUnit));
+    }
 }
 
 void renderMiniMap()

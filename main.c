@@ -24,7 +24,7 @@ int main()
 		// Render the instructions page.
 		SDL_RenderCopy(renderer, imageTexture, NULL, NULL);
 		SDL_RenderPresent(renderer);
-		SDL_Delay(10000);
+		SDL_Delay(8000);
 
 		SDL_RenderClear(renderer);
 		while( quit == false )

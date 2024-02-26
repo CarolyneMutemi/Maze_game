@@ -37,6 +37,7 @@ extern SDL_Renderer* renderer;
 extern SDL_Texture* imageTexture;
 extern int cubeUnit;
 extern movePlayer player;
+extern bool instructions;
 
 void drawWallSlice();
 bool init();
