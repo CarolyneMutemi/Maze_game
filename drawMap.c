@@ -19,7 +19,13 @@ void drawMap()
             cube.w = cubeUnit;
             cube.h = cubeUnit;
 
-            if (gameMap[yCor][xCor] != 0)
+            if (gameMap[yCor][xCor] == 9)
+            {
+                SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+                SDL_RenderDrawRect(renderer, &cube);
+                SDL_SetRenderDrawColor(renderer, 159, 0, 255, 255);
+            }
+            else if (gameMap[yCor][xCor] != 0)
             {
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255,255);
                 SDL_RenderDrawRect(renderer, &cube);
