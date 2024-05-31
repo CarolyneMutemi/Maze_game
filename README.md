@@ -14,6 +14,8 @@ To install the SDL2 image extension libraries follow [this link](https://lazyfoo
 
 To generate the binary file run the makefile.
 
+Now run the binary file => **./main** <= to start the game.
+
 ### The controls of the game are:
 **UP arrow key** - to move forward.
 
