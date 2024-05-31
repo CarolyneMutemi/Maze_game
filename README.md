@@ -8,8 +8,9 @@ SDL2 library is used to render the game.
 Run the setup script => **./setup**
 	to install the dependencies in a Linux OS.
 
-To set up SDL2 in Windows follow [this link] (https://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/index.php) for a guide.
-To install the SDL2 image extension libraries follow [this link] (https://lazyfoo.net/tutorials/SDL/06_extension_libraries_and_loading_other_image_formats/windows/index.php) for a guide.
+To set up SDL2 in Windows follow [this link](https://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/index.php) for a guide.
+
+To install the SDL2 image extension libraries follow [this link](https://lazyfoo.net/tutorials/SDL/06_extension_libraries_and_loading_other_image_formats/windows/index.php) for a guide.
 
 To generate the binary file run the makefile.
 
