@@ -15,9 +15,12 @@ To install the SDL2 image extension libraries follow [this link](https://lazyfoo
 To generate the binary file run the makefile.
 
 ### The controls of the game are:
-*UP arrow key* - to move forward.
-*Down arrow key* - to move backward.
-*Left arrow key* - to rotate to the left.
-*Right arrow key* - to rotate to the right.
+**UP arrow key** - to move forward.
 
-*Space bar* - to show the minimap.
+**Down arrow key** - to move backward.
+
+**Left arrow key** - to rotate to the left.
+
+**Right arrow key** - to rotate to the right.
+
+**Space bar** - to show the minimap.
