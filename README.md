@@ -2,12 +2,15 @@
 
 ## Maze game is a game inspired by the Wolfenstein 3D game.
 
-It employs raycasting plus the use of DDA algorithm.
+It employs raycasting plus the use of the DDA algorithm.
 SDL2 library is used to render the game.
 
-To generate the the binary file run the makefile.
+Run the the setup script => *./setup*
+  to install the dependencies in a Linux OS.
 
-### The controls to the game are:
+To generate the binary file run the makefile.
+
+### The controls of the game are:
 *UP arrow key* - to move forward.
 *Down arrow key* - to move backward.
 *Left arrow key* - to rotate to the left.
